@@ -7,11 +7,12 @@ import React, { Suspense, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Float, Html, useTexture } from '@react-three/drei'
 import { motion } from 'framer-motion'
+import { Mesh } from 'three';
 import { Sun, Moon, Mail } from 'lucide-react'
 
 // --- 3D Scene Component ---
 function AnimatedTorus({ hovered }: { hovered: boolean }) {
-  const ref = useRef()
+  const ref = useRef<Mesh>(null!);
   useFrame((st, dt) => {
     ref.current.rotation.x += dt * 0.2
     ref.current.rotation.y += dt * 0.5
