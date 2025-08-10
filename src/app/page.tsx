@@ -35,8 +35,11 @@ function GroundGrid() {
     </mesh>
   )
 }
+interface SceneProps {
+  setHovered: (hovered: boolean) => void;
+}
 
-function Scene({ setHovered }) {
+function Scene({ setHovered }: SceneProps) {
   return (
     <>
       <ambientLight intensity={0.6} />
@@ -45,14 +48,14 @@ function Scene({ setHovered }) {
 
       <Suspense fallback={null}>
         <group onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)}>
-          <AnimatedTorus />
+          <AnimatedTorus hovered={false} /> {/* pass hovered as needed */}
         </group>
       </Suspense>
 
       <OrbitControls enablePan={false} enableZoom={false} autoRotate autoRotateSpeed={0.6} />
       <GroundGrid />
     </>
-  )
+  );
 }
 
 // --- UI Component ---
