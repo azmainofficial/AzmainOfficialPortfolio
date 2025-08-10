@@ -10,7 +10,7 @@ import { motion } from 'framer-motion'
 import { Sun, Moon, Mail } from 'lucide-react'
 
 // --- 3D Scene Component ---
-function AnimatedTorus({ hovered }) {
+function AnimatedTorus({ hovered }: { hovered: boolean }) {
   const ref = useRef()
   useFrame((st, dt) => {
     ref.current.rotation.x += dt * 0.2
